@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Form</title>
+    <style>
+        body {
+            margin: 0;padding: 0;
+            background-color: #007BFF;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+        }
+        body h1{
+            color: white;
+            margin-top: 80px;
+            width: 50vw;            
+            height: auto;
+            text-align: center;
+        }
+        .container {
+            background-color: #fff;
+            margin-top: 20px;
+            width: 50vw;            
+            height: auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        .side-by-side{
+            display: flex;
+            justify-content: space-between;
+        }
+        .margin-between{
+            margin: 20px;
+        }
+        #name-field{
+            height: 5vh;
+            width: 20vw;
+        }
+        #email-field{
+            height: 5vh;
+            width: 20vw;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .checkbox-label {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        #feedback{
+            display: block;
+            resize: none;
+            width: 45vw;
+            height: 70px;
+            margin-bottom: 20px;
+        }
+        #submit-button, #reset-button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Customer Survey Form</h1>
+
+        <div class="container">
+            <form id="survey-form">
+                <div class = "side-by-side margin-between">
+                    <div>
+                        <label for="name-field">Name:</label>
+                        <input type="text" id="name-field" required>
+                    </div>
+                    <div>
+                        <label for="email-field">Email:</label>
+                        <input type="email" id="email-field" required>
+                    </div>
+                </div>
+                
+                <div class = "margin-between">
+                    <label>Is this first time you are using our products & services?</label>
+                    <label class="checkbox-label">
+                        <input type="radio" name="first-time" value="Yes"> Yes
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="radio" name="first-time" value="No"> No
+                    </label>
+                </div>
+                
+
+                <div class = "margin-between">
+                    <label>Would you suggest to your friends and colleague?</label>
+                    <label class="checkbox-label">
+                        <input type="radio" name="suggest" value="Yes"> Yes
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="radio" name="suggest" value="No"> No
+                    </label>
+                </div>
+                
+
+                <div class = "margin-between">
+                    <label>How salisfied are you with our compny overall?</label>
+                    <label class="checkbox-label">
+                        <input type="radio" name="how-satisfied" value="Satisfied"> Satisfied
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="radio" name="how-satisfied" value="Undecided"> Undecided
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="radio" name="how-satisfied" value="Unsatisfied"> Unsatisfied
+                    </label>
+                </div>
+                
+
+                <div class = "margin-between">
+                    <label for="feedback">Do you have suggestions to improve our service?</label>
+                    <textarea id="feedback"></textarea>
+                </div>
+            
+                
+                <div class = "margin-between">
+                    <button type="button" id="submit-button">Submit</button>
+                    <button type="reset" id="reset-button">Reset</button>
+                </div>
+            
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("submit-button").addEventListener("click", function(event) {
+        var nameField = document.getElementById("name-field").value;
+        var emailField = document.getElementById("email-field").value;
+        var howSatisfied = document.querySelector('input[name="how-satisfied"]:checked');
+        var suggest = document.querySelector('input[name="suggest"]:checked');
+        var firstTime = document.querySelector('input[name="first-time"]:checked');
+        var feedback = document.getElementById("feedback").value;
+
+        if (nameField && emailField && howSatisfied && suggest && firstTime && feedback) {
+            alert("Survey Form Submitted:\n\n");
+        } else {
+            alert("Please fill in all the required fields.");
+            event.preventDefault(); // Prevent form submission
+        }
+        });
+    </script>
+</body>
+</html>
