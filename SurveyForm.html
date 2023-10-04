@@ -144,6 +144,7 @@
 
         if (nameField && emailField && howSatisfied && suggest && firstTime && feedback) {
             alert("Survey Form Submitted:\n\n");
+            document.getElementById("survey-form").reset();
         } else {
             alert("Please fill in all the required fields.");
             event.preventDefault(); // Prevent form submission
