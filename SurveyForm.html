@@ -146,10 +146,10 @@
             var popup = "Survey Form Submitted:\n\n";
             popup += "Name: " + nameField + "\n";
             popup += "Email: " + emailField + "\n";
-            popup += "First Time: " + firstTime.value + "\n";
-            popup += "Suggest: " + suggest.value + "\n";
-            popup += "How Satisfied: " + howSatisfied.value + "\n";
-            popup += "Feedback: " + feedback;
+            popup += "Is this first time you are using our products & services? " + firstTime.value + "\n";
+            popup += "Would you suggest to your friends and colleague? " + suggest.value + "\n";
+            popup += "How salisfied are you with our compny overall? " + howSatisfied.value + "\n";
+            popup += "Do you have suggestions to improve our service? " + feedback;
 
             alert(popup);
             document.getElementById("survey-form").reset();
