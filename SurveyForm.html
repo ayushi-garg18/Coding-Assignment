@@ -143,7 +143,15 @@
         var feedback = document.getElementById("feedback").value;
 
         if (nameField && emailField && howSatisfied && suggest && firstTime && feedback) {
-            alert("Survey Form Submitted:\n\n");
+            var popup = "Survey Form Submitted:\n\n";
+            popup += "Name: " + nameField + "\n";
+            popup += "Email: " + emailField + "\n";
+            popup += "First Time: " + firstTime.value + "\n";
+            popup += "Suggest: " + suggest.value + "\n";
+            popup += "How Satisfied: " + howSatisfied.value + "\n";
+            popup += "Feedback: " + feedback;
+
+            alert(popup);
             document.getElementById("survey-form").reset();
         } else {
             alert("Please fill in all the required fields.");
