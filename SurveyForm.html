@@ -10,6 +10,7 @@
             display: flex;
             justify-content: center;
         }
+        
         body h1{
             color: white;
             margin-top: 80px;
@@ -17,6 +18,7 @@
             height: auto;
             text-align: center;
         }
+        
         .container {
             background-color: #fff;
             margin-top: 20px;
@@ -25,29 +27,36 @@
             padding: 10px;
             border: 1px solid #ccc;
         }
+        
         .side-by-side{
             display: flex;
             justify-content: space-between;
         }
+        
         .margin-between{
             margin: 20px;
         }
+        
         #name-field{
             height: 5vh;
             width: 20vw;
         }
+        
         #email-field{
             height: 5vh;
             width: 20vw;
         }
+        
         label {
             display: block;
             margin-bottom: 5px;
         }
+        
         .checkbox-label {
             display: inline-block;
             margin-right: 10px;
         }
+        
         #feedback{
             display: block;
             resize: none;
@@ -55,6 +64,7 @@
             height: 70px;
             margin-bottom: 20px;
         }
+        
         #submit-button, #reset-button {
             padding: 10px 20px;
             background-color: #007BFF;
@@ -90,8 +100,7 @@
                     <label class="checkbox-label">
                         <input type="radio" name="first-time" value="No"> No
                     </label>
-                </div>
-                
+                </div>   
 
                 <div class = "margin-between">
                     <label>Would you suggest to your friends and colleague?</label>
@@ -103,7 +112,6 @@
                     </label>
                 </div>
                 
-
                 <div class = "margin-between">
                     <label>How salisfied are you with our compny overall?</label>
                     <label class="checkbox-label">
@@ -117,13 +125,11 @@
                     </label>
                 </div>
                 
-
                 <div class = "margin-between">
                     <label for="feedback">Do you have suggestions to improve our service?</label>
                     <textarea id="feedback"></textarea>
                 </div>
             
-                
                 <div class = "margin-between">
                     <button type="button" id="submit-button">Submit</button>
                     <button type="reset" id="reset-button">Reset</button>
@@ -155,7 +161,7 @@
             document.getElementById("survey-form").reset();
         } else {
             alert("Please fill in all the required fields.");
-            event.preventDefault(); // Prevent form submission
+            event.preventDefault();
         }
         });
     </script>
