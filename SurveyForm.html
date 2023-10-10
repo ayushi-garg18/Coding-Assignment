@@ -10,53 +10,44 @@
             display: flex;
             justify-content: center;
         }
-        
         body h1{
             color: white;
             margin-top: 80px;
-            width: 50vw;            
+            width: 50vw;
             height: auto;
             text-align: center;
         }
-        
         .container {
             background-color: #fff;
             margin-top: 20px;
-            width: 50vw;            
+            width: 50vw;
             height: auto;
             padding: 10px;
             border: 1px solid #ccc;
         }
-        
         .side-by-side{
             display: flex;
             justify-content: space-between;
         }
-        
         .margin-between{
             margin: 20px;
         }
-        
         #name-field{
             height: 5vh;
             width: 20vw;
         }
-        
         #email-field{
             height: 5vh;
             width: 20vw;
         }
-        
         label {
             display: block;
             margin-bottom: 5px;
         }
-        
         .checkbox-label {
             display: inline-block;
             margin-right: 10px;
         }
-        
         #feedback{
             display: block;
             resize: none;
@@ -64,19 +55,27 @@
             height: 70px;
             margin-bottom: 20px;
         }
-        
-        #submit-button, #reset-button {
+        #submit-button, #reset-button, #ok-button {
             padding: 10px 20px;
             background-color: #007BFF;
             color: #fff;
             border: none;
             cursor: pointer;
         }
-    
+        #popup{
+            display: none; 
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            background-color: #ccdef3; 
+            padding: 20px; 
+            border: 1px solid #8dbaee;
+        }
     </style>
 </head>
 <body>
-    <div>
+    <div id = "form">
         <h1>Customer Survey Form</h1>
 
         <div class="container">
@@ -100,8 +99,8 @@
                     <label class="checkbox-label">
                         <input type="radio" name="first-time" value="No"> No
                     </label>
-                </div>   
-
+                </div>
+                
                 <div class = "margin-between">
                     <label>Would you suggest to your friends and colleague?</label>
                     <label class="checkbox-label">
@@ -113,7 +112,7 @@
                 </div>
                 
                 <div class = "margin-between">
-                    <label>How satisfied are you with our compny overall?</label>
+                    <label>How salisfied are you with our compny overall?</label>
                     <label class="checkbox-label">
                         <input type="radio" name="how-satisfied" value="Satisfied"> Satisfied
                     </label>
@@ -129,40 +128,52 @@
                     <label for="feedback">Do you have suggestions to improve our service?</label>
                     <textarea id="feedback"></textarea>
                 </div>
-            
+                
                 <div class = "margin-between">
                     <button type="button" id="submit-button">Submit</button>
                     <button type="reset" id="reset-button">Reset</button>
                 </div>
-            
             </form>
         </div>
+    </div>
+    <div id="popup">
     </div>
 
     <script>
         document.getElementById("submit-button").addEventListener("click", function(event) {
-        var nameField = document.getElementById("name-field").value;
-        var emailField = document.getElementById("email-field").value;
-        var howSatisfied = document.querySelector('input[name="how-satisfied"]:checked');
-        var suggest = document.querySelector('input[name="suggest"]:checked');
-        var firstTime = document.querySelector('input[name="first-time"]:checked');
-        var feedback = document.getElementById("feedback").value;
+            
+            var nameField = document.getElementById("name-field").value;
+            var emailField = document.getElementById("email-field").value;
+            var howSatisfied = document.querySelector('input[name="how-satisfied"]:checked');
+            var suggest = document.querySelector('input[name="suggest"]:checked');
+            var firstTime = document.querySelector('input[name="first-time"]:checked');
+            var feedback = document.getElementById("feedback").value;
 
-        if (nameField && emailField && howSatisfied && suggest && firstTime && feedback) {
-            var popup = "Survey Form Submitted:\n\n";
-            popup += "Name: " + nameField + "\n";
-            popup += "Email: " + emailField + "\n";
-            popup += "Is this first time you are using our products & services? " + firstTime.value + "\n";
-            popup += "Would you suggest to your friends and colleague? " + suggest.value + "\n";
-            popup += "How satisfied are you with our compny overall? " + howSatisfied.value + "\n";
-            popup += "Do you have suggestions to improve our service? " + feedback;
+            if (nameField && emailField && howSatisfied && suggest && firstTime && feedback) {
+                
+                document.getElementById("form").style.filter = "blur(5px)";
+                var popup = "<strong> Survey Form Submitted:</strong><br><br><br>";
+                popup += "<strong> Name: </strong>" + nameField + "<br><br>";
+                popup += "<strong> Email: </strong>" + emailField + "<br><br>";
+                popup += "<strong> Is this first time you are using our products & services? </strong>" + firstTime.value + "<br><br>";
+                popup += "<strong> Would you suggest to your friends and colleague? </strong>" + suggest.value + "<br><br>";
+                popup += "<strong> How salisfied are you with our compny overall? </strong>" + howSatisfied.value + "<br><br>";
+                popup += "<strong> Do you have suggestions to improve our service? </strong>" + feedback + "<br><br><br>";
+                popup += "<button id= ok-button>OK</button>";
 
-            alert(popup);
-            document.getElementById("survey-form").reset();
-        } else {
-            alert("Please fill in all the required fields.");
-            event.preventDefault();
-        }
+                document.getElementById("popup").innerHTML = popup;
+                document.getElementById("popup").style.display = "block";
+                document.getElementById("ok-button").addEventListener("click", function() {
+
+                    document.getElementById("form").style.filter = "none";
+                    document.getElementById("popup").style.display = "none";
+                    document.getElementById("survey-form").reset();
+                });
+            } 
+            else {
+                alert("Please fill in all the required fields.");
+                event.preventDefault(); 
+            }
         });
     </script>
 </body>
